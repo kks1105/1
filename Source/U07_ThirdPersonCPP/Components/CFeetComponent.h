@@ -50,7 +50,7 @@ public:
 	FORCEINLINE const FFeetData& GetData() { return Data; } //데이터넣을인라인함수
 
 private:
-	void Trace(FName InSocketName, float& OutDistance); //라인트레이스 소켓이름을가진게 공중에떠있는정도를리턴받을거임
+	void Trace(FName InSocketName, float& OutDistance,FRotator& OutRotation); //라인트레이스 소켓이름을가진게 공중에떠있는정도를리턴받을거임 , 회전도받을거임
 
 protected:
 	UPROPERTY(EditAnywhere, Category = "IK")
@@ -65,6 +65,10 @@ protected:
 		TEnumAsByte<EDrawDebugTrace::Type> DrawDebugType = EDrawDebugTrace::ForDuration;//선보이기에디트에서설정할수있게 1바이트로설정
 	UPROPERTY(EditAnywhere, Category = "IK")
 		float AdJustHeight = 5.f; //발목에서트레이스재서 보정값주는거
+
+	UPROPERTY(EditAnywhere, Category = "IK")
+		float InterpSpeed = 5.f; //발이붙는속도
+
 
 private:
 	FFeetData Data; 
